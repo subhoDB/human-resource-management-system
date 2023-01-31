@@ -9,9 +9,9 @@ class CandidateMaster extends Model
 {
     use HasFactory;
     public $timestamps = true;
-
+    
     protected $fillable = [
-        'candidate_name',
+        'name',
         'phone_no',
         'email_id',
         'total_experience',
@@ -22,11 +22,9 @@ class CandidateMaster extends Model
         'expected_salary',
         'notice_period',
         'comment',
-        'cv_path',
         'created_by',
         'updated_by',
         'deleted_by',
-        'candidate_status',
-        'is_deleted'
+        'candidate_status'
     ];
 }
