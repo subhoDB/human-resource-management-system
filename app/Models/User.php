@@ -49,7 +49,7 @@ class User extends Authenticatable {
     ];
 
     public function employee() {
-        return $this->hasOne(EmployeeMaster::class,'id');
+        return $this->hasOne(EmployeeMaster::class,'id','user_id');
     }
 
     public function logged_info() {

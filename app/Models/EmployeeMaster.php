@@ -137,35 +137,36 @@ class EmployeeMaster extends Model
         $this->attributes['official_email'] = strtolower($value);
     }
     
-    /**
-     * @todo Define all relations EmployeeMaster model to all
-     */
     public function user() 
     {
-        return $this->hasOne(User::class,'id','employee_id');
+        return $this->belongsTo(User::class,'id','user_id');
     }
 
-    public function enployee_resignation() 
+    /**
+     * Create relation with pivot table employees_intervires
+     * @author Subhodeep Bharracharjee <subhodeep307047@gmail.com>
+     * @return App/Model/Interview::class 
+     */
+    public function interviews() 
     {
-        return $this->hasOne(EmployeeResignationDetails::class,'id','employee_id');
+        return $this->belongsToMany(Interview::class, 'employees_interviews', 'employee_id', 'interview_id');
     }
 
-    public function employee_attendance() 
+    /**
+     * Get all of the skills for the employee.
+     */
+    public function skills()
     {
-        return $this->hasMany(EmployeeAttendanceMaster::class,'id','employee_id');
+        return $this->morphToMany(SkillsMaster::class, 'skillable');
     }
 
-    public function employee_leaves() 
+    public function attendance() 
     {
-        return $this->hasOne(EmployeeLeaveMaster::class,'id','employee_id');
-    }
-    
-    public function leave_details() 
-    {
-        return $this->hasMany(EmployeeLeaveDetails::class,'id','employee_id');
+        return $this->hasMany(Attendance::class, 'employee_id', 'id');
     }
 
-    public function employee_designation() {
-        
+    public function candidate() 
+    {
+        return $this->hasMany(CandidateMaster::class, 'created_by', 'id');
     }
 }

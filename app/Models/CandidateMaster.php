@@ -9,7 +9,7 @@ class CandidateMaster extends Model
 {
     use HasFactory;
     public $timestamps = true;
-    
+
     protected $fillable = [
         'name',
         'phone_no',
@@ -27,4 +27,9 @@ class CandidateMaster extends Model
         'deleted_by',
         'candidate_status'
     ];
+
+    public function employee() 
+    {
+        return $this->belongsTo(EmployeeMaster::class, 'created_by', 'id');
+    }
 }
