@@ -65,3 +65,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # human-resource-management-system
+1. Composer install first
+2. Run migration with seeded data
+3. Connect database .env
+4. Last serve "php artisan serve"
